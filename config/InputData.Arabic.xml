@@ -1,0 +1,563 @@
+<?xml version="1.0" ?>
+<data>
+  <test id="0">
+    <description>
+      100 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.10.txt
+    </source>
+    <target>
+      english.small.10.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="1">
+    <description>
+      100 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.10.txt
+    </source>
+    <target>
+      english.small.10.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="2">
+    <description>
+      300 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.11.txt
+    </source>
+    <target>
+      english.small.11.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="3">
+    <description>
+      300 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.11.txt
+    </source>
+    <target>
+      english.small.11.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="4">
+    <description>
+      500 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.12.txt
+    </source>
+    <target>
+      english.small.12.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="5">
+    <description>
+      500 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.12.txt
+    </source>
+    <target>
+      english.small.12.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="6">
+    <description>
+      700 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.13.txt
+    </source>
+    <target>
+      english.small.13.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="7">
+    <description>
+      700 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.13.txt
+    </source>
+    <target>
+      english.small.13.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="8">
+    <description>
+      900 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.14.txt
+    </source>
+    <target>
+      english.small.14.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="9">
+    <description>
+      900 random phrase from UN corpus without seperators
+    </description>
+    <source>
+      arabic.small.14.txt
+    </source>
+    <target>
+      english.small.14.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="10">
+    <description>
+      100 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.20.txt
+    </source>
+    <target>
+      english.small.20.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="11">
+    <description>
+      100 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.20.txt
+    </source>
+    <target>
+      english.small.20.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="12">
+    <description>
+      300 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.21.txt
+    </source>
+    <target>
+      english.small.21.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="13">
+    <description>
+      300 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.21.txt
+    </source>
+    <target>
+      english.small.21.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="14">
+    <description>
+      500 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.22.txt
+    </source>
+    <target>
+      english.small.22.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="15">
+    <description>
+      500 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.22.txt
+    </source>
+    <target>
+      english.small.22.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="16">
+    <description>
+      700 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.23.txt
+    </source>
+    <target>
+      english.small.23.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="17">
+    <description>
+      700 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.23.txt
+    </source>
+    <target>
+      english.small.23.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="18">
+    <description>
+      900 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.24.txt
+    </source>
+    <target>
+      english.small.24.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="19">
+    <description>
+      900 random phrase from UN corpus with newlines and tabs
+    </description>
+    <source>
+      arabic.small.24.txt
+    </source>
+    <target>
+      english.small.24.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="20">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 20 arabic, 10 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="21">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 20 arabic, 10 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="22">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 60 arabic, 30 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="23">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 60 arabic, 30 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="24">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 100 arabic, 50 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="25">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 100 arabic, 50 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="26">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 140 arabic, 70 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="27">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 140 arabic, 70 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="28">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 180 arabic, 90 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="29">
+    <description>
+      200 random phrase from UN corpus with spurious phrases 180 arabic, 90 english
+    </description>
+    <source>
+      arabic.small.30.txt
+    </source>
+    <target>
+      english.small.30.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="30">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 20 arabic, 10 english
+    </description>
+    <source>
+      arabic.small.40.txt
+    </source>
+    <target>
+      english.small.40.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="31">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 20 arabic, 10 english
+    </description>
+    <source>
+      arabic.small.40.txt
+    </source>
+    <target>
+      english.small.40.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="32">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 60 arabic, 30 english
+    </description>
+    <source>
+      arabic.small.41.txt
+    </source>
+    <target>
+      english.small.41.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="33">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 60 arabic, 30 english
+    </description>
+    <source>
+      arabic.small.41.txt
+    </source>
+    <target>
+      english.small.41.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="34">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 100 arabic, 50 english
+    </description>
+    <source>
+      arabic.small.42.txt
+    </source>
+    <target>
+      english.small.42.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="35">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 100 arabic, 50 english
+    </description>
+    <source>
+      arabic.small.42.txt
+    </source>
+    <target>
+      english.small.42.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="36">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 140 arabic, 70 english
+    </description>
+    <source>
+      arabic.small.43.txt
+    </source>
+    <target>
+      english.small.43.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="37">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 140 arabic, 70 english
+    </description>
+    <source>
+      arabic.small.43.txt
+    </source>
+    <target>
+      english.small.43.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="38">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 180 arabic, 90 english
+    </description>
+    <source>
+      arabic.small.44.txt
+    </source>
+    <target>
+      english.small.44.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+  <test id="39">
+    <description>
+      120 random phrase from UN corpus with newlines , tabs, spaces, dots , and commmas, with spurious phrases 180 arabic, 90 english
+    </description>
+    <source>
+      arabic.small.44.txt
+    </source>
+    <target>
+      english.small.44.txt
+    </target>
+    <golden>
+      uncorpora_nolayout_20090710.tmx
+    </golden>
+  </test>
+</data>

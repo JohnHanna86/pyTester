@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<data>
+<test id="0">
+<description>
+small test case consists of 100 sentences
+</description>
+<source>
+	arabic.small.txt
+</source>
+<target>
+	english.small.txt
+</target>
+<golden>
+	arabic_english.small.golden.tmx
+</golden>
+</test>
+
+<test id="1">
+<description>
+small test case consists of 100 sentences
+</description>
+<source>
+	arabic.small.1.txt
+</source>
+<target>
+	english.small.2.txt
+</target>
+<golden>
+	arabic_english.small.golden.tmx
+</golden>
+</test>
+
+<test id="2">
+<description>
+small test case consists of 100 sentences
+</description>
+<source>
+	arabic.small.2.txt
+</source>
+<target>
+	english.small.2.txt
+</target>
+<golden>
+	arabic_english.small.golden.tmx
+</golden>
+</test>
+
+
+<test id="3">
+<description>
+small test case consists of 100 sentences + unaligned sentences
+</description>
+<source>
+	arabic.small.3.txt
+</source>
+<target>
+	english.small.3.txt
+</target>
+<golden>
+	arabic_english.small.golden.tmx
+</golden>
+</test>
+
+<test id="4">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 6399 sentence
+</description>
+<source>
+	arabic.small.4.txt
+</source>
+<target>
+	english.small.4.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_6399_sentence.tmx
+</golden>
+</test>
+
+<test id="5">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9313 sentence
+</description>
+<source>
+	arabic.small.5.txt
+</source>
+<target>
+	english.small.5.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9313_sentence.tmx
+</golden>
+</test>
+
+
+<test id="6">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9058 sentence
+</description>
+<source>
+	arabic.small.6.txt
+</source>																																																																																																																																							
+<target>
+	english.small.6.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9058_sentence.tmx
+</golden>
+</test>
+
+<test id="7">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9319 sentence
+</description>
+<source>
+	arabic.small.7.txt
+</source>
+<target>
+	english.small.7.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9319_sentence.tmx
+</golden>
+</test>
+
+<test id="8">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9300 sentence, separated by newline
+</description>
+<source>
+	arabic.small.8.txt
+</source>
+<target>
+	english.small.8.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9300_sentence.tmx
+</golden>
+</test>
+
+<test id="9">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 7901 sentence, separated by newline
+</description>
+<source>
+	arabic.small.9.txt
+</source>
+<target>
+	english.small.9.txt
+</target>
+<golden>
+	arabic_english_randomSelected_Meedan_7901_sentence.tmx
+</golden>
+</test>
+
+<test id="10">
+<description>
+large size test case , full Meedan parallel corpus, has 19957 sentence, separated by newline
+</description>
+<source>
+	arabic.small.10.txt
+</source>
+<target>
+	english.small.10.txt
+</target>
+<golden>
+	arabic_english_full_Meedan_19957_sentence.tmx
+</golden>
+</test>
+
+<test id="11">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 6399 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.11.txt
+</source>
+<target>
+	english.small.11.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_6399_sentence.tmx
+</golden>
+</test>
+
+<test id="12">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9313 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.12.txt
+</source>
+<target>
+	english.small.12.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9313_sentence.tmx
+</golden>
+</test>
+
+<test id="13">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9058 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.13.txt
+</source>																																																																																																																																							
+<target>
+	english.small.13.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9058_sentence.tmx
+</golden>
+</test>
+
+<test id="14">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9319 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.14.txt
+</source>
+<target>
+	english.small.14.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9319_sentence.tmx
+</golden>
+</test>
+
+<test id="15">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 9300 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.15.txt
+</source>
+<target>
+	english.small.15.txt
+</target>
+<golden>
+	arabic_english_randomSelected_UN_9300_sentence.tmx
+</golden>
+</test>
+
+<test id="16">
+<description>
+average size test case , randomly selected from the UN parallel corpus, has 7901 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.16.txt
+</source>
+<target>
+	english.small.16.txt
+</target>
+<golden>
+	arabic_english_randomSelected_Meedan_7901_sentence.tmx
+</golden>
+</test>
+
+
+<test id="17">
+<description>
+large size test case , randomly selected from the Meedan parallel corpus, has 19957 sentence, randomly selected separators
+</description>
+<source>
+	arabic.small.17.txt
+</source>
+<target>
+	english.small.17.txt
+</target>
+<golden>
+	arabic_english_full_Meedan_19957_sentence.tmx
+</golden>
+</test>
+
+<test id="18">
+<description>
+large size test case , full Meedan parallel corpus, has 19957 sentence, separated by newline
+</description>
+<source>
+	arabic.small.18.txt
+</source>
+<target>
+	english.small.18.txt
+</target>
+<golden>
+	arabic_english_full_Meedan_19957_sentence.tmx
+</golden>
+</test>
+
+</data>
