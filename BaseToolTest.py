@@ -26,6 +26,9 @@ from xml.dom import minidom
 import ConfigParser
 import difflib
 import traceback
+from clint.textui import colored
+from pygooglechart import GroupedVerticalBarChart
+
 
 
 #TOOL_PATH
@@ -42,9 +45,19 @@ class BaseToolTest(unittest.TestCase):
         self.goldenAlignments = []
         self.actualAlignments = []
         
+        #used to draw graphs
+        self.index = []
+        self.sourceLengths = []
+        self.targetLengths = []
+        self.times = []
+        self.errorRates = []
         
+    
     def initialize(self):
-        self.TOOL_NAME = 'default'
+        self.TOOL_NAME = 'default'        
+        
+    def readLinesEnabled(self):
+    	return False
         
     def readInputData(self):
         config = ConfigParser.ConfigParser()
@@ -135,21 +148,21 @@ class BaseToolTest(unittest.TestCase):
 
     def _doesAlignmentExistInGolden(self, actualAlignment):
 		#get the original soruce
-		print "_doesAlignmentExistInGolden"
+		#print "_doesAlignmentExistInGolden"
 		(goldenSource, index)  = self._getOriginalSource(actualAlignment.target)
 		trial = 0
 		while goldenSource != None:
-			print "Trial [%d] at index: %d"%(trial, index)
+			#print "Trial [%d] at index: %d"%(trial, index)
 			trial = trial + 1
 			#see if the targets
 			result = self.compareTwoSentences(goldenSource, actualAlignment.source)
 			if result:
-				print "Found"
+				#print "Found"
 				return True
 			(goldenSource, index)  = self._getOriginalSource(actualAlignment.source, index+1)
 		#if goldenSource == None:
 		#	print "5eles El kalam"
-		print "Not Found"
+		#print "Not Found"
 		return False
 		
 		
@@ -168,14 +181,29 @@ class BaseToolTest(unittest.TestCase):
         			#print "Found"
         			return (orignalAlignment.source, i)
         	except UnicodeDecodeError:
-        			print "_getOriginalSource: Error IN UNICODE"
+        			print colored.red("_getOriginalSource: Error IN UNICODE")
         #print "NOT Found"
         return (None, i)
+        
+    def _getLines(self, filePath):
+		f = open(filePath, 'r')
+		raw_lines = f.readlines()
+		lines = [line for line in raw_lines if not(line.strip() == '')]
+		return lines
 
 
     def writeSummary(self):
-        self.outputFile.write("%s, %s, %s, %s, %s, %s, %s\n"%(self.count, self.passedAlignment, self.failedAlignment, self.timeTaken, self.averageSentencesLengthInSource, self.averageSentencesLengthInTarget, self.successful))
+        self.outputFile.write("%s, %s, %s, %s, %s, %s, %s, %s\n"%(self.count, self.passedAlignment, self.failedAlignment, self.errorRate, self.timeTaken, self.averageSentencesLengthInSource, self.averageSentencesLengthInTarget, self.successful))
         self.outputFile.flush()
+    
+    def generateGraphs(self):
+		#time taken
+		chart = GroupedVerticalBarChart(len(self.index)*10, len(self.index)*10, x_range=(0, len(self.index)))
+		chart.set_bar_width(10)
+		chart.set_colours(['00ff00', 'ff0000'])
+		chart.add_data(self.index)
+		chart.add_data(self.times)
+		chart.download('vanilla-times.png')
         
     def compareTwoSentences(self, first, second):
     	#compare two string, whether the first is contained in the second or the second is contained in the second    	
@@ -197,8 +225,8 @@ class BaseToolTest(unittest.TestCase):
 	    			#print "NOT MATCHING..."
 	    			return False
 	    	except UnicodeDecodeError:
-	    		print "compareTwoSentences: Error IN UNICODE"
-	    		print traceback.format_exc()
+	    		print colored.red("compareTwoSentences: Error IN UNICODE")
+	    		print colored.red(traceback.format_exc())
 	    		return False
         #print "One/Both of two sentences is null"
         #print "First : ", first
@@ -210,6 +238,7 @@ class BaseToolTest(unittest.TestCase):
     	print "Evaluate Result"
         self.passedAlignment = 0 
         self.failedAlignment = 0
+        self.errorRate = 0
             
         correctAlignmentFile = open("%s_correct_test[%s].txt"%(self.AlignmentFilePath, self.count), 'w')    
         wrongAlignmentFile = open("%s_wrong_test[%s].txt"%(self.AlignmentFilePath, self.count), 'w')
@@ -225,7 +254,7 @@ class BaseToolTest(unittest.TestCase):
         print "looping over actual alignments..."
         i = 0
         for actualAlignment in self.actualAlignments:
-            print "Progress: %d out of %d"%(i , len(self.actualAlignments))
+            #print "Progress: %d out of %d"%(i , len(self.actualAlignments))
             i = i + 1
             #print "evaluateResult, actualAlignment.target: ", actualAlignment.target
             #goldenSource = self._getOriginalSource(actualAlignment.target)
@@ -238,8 +267,8 @@ class BaseToolTest(unittest.TestCase):
                 correctAlignmentFile.write(actualAlignment.target)
                 correctAlignmentFile.write('\n')
                 
-                self.averageSentencesLengthInSource += len(actualAlignment.source)
-                self.averageSentencesLengthInTarget += len(actualAlignment.target)
+                self.averageSentencesLengthInSource += len(actualAlignment.source.split())
+                self.averageSentencesLengthInTarget += len(actualAlignment.target.split())
             else:
             	#print 
             	#print "================= Failed Alignemnt ================="
@@ -254,11 +283,12 @@ class BaseToolTest(unittest.TestCase):
             #break
                 
         print ''
-        print 'Failed Alignments :', self.failedAlignment
-        print 'Passed Alignments :', self.passedAlignment
+        print colored.green('Failed Alignments :%s'% self.failedAlignment)
+        print colored.green('Passed Alignments :%s'% self.passedAlignment)
         
-        self.averageSentencesLengthInSource = (float)(self.averageSentencesLengthInSource) / (float)(self.passedAlignment)
-        self.averageSentencesLengthInTarget = (float)(self.averageSentencesLengthInTarget) / (float)(self.passedAlignment)
+        if self.passedAlignment != 0:
+	        self.averageSentencesLengthInSource = (float)(self.averageSentencesLengthInSource) / (float)(self.passedAlignment)
+	        self.averageSentencesLengthInTarget = (float)(self.averageSentencesLengthInTarget) / (float)(self.passedAlignment)
         
         correctAlignmentFile.flush()
         correctAlignmentFile.close()
@@ -275,19 +305,35 @@ class BaseToolTest(unittest.TestCase):
         self.count = 0
         print ''
         
-        self.outputFile.write("test_number, passed_alignments, failed_alignments, time_taken, average_english_sentence_length, average_arabic_sentence_length, Successful?\n")        
+        self.outputFile.write("test_number, passed_alignments, failed_alignments, errorRate, time_taken, average_english_sentence_length, average_arabic_sentence_length, Successful?\n")        
+        
+        self.totalAverageSentencesLengthInSource = 0.0
+        self.totalAverageSentencesLengthInTarget = 0.0
+        self.totalAverageTimeTaken = 0.0
+        self.totalAverageErrorRate = 0.0
+        
+        self.errorRate = 0.0
+        
+        numberOfTestsRun = 0.0
+        
+        previousGolden = ''
+        
         #self.outputFile.write('Tool Name: %s\n'% self.TOOL_NAME)
         for (arabic_in, english_in, golden) in self.TestList:
             #self.outputFile.write('Test[%s]:\n'%self.count)
             print 'Running test:', self.count
             startTime = time.time()
+            if self.readLinesEnabled():
+            	print "Reading lines for both source and target files"
+            	self.sourceLines = self._getLines(arabic_in)
+            	self.targetLines = self._getLines(english_in)
             arabic_in_run = self.convertToSuitableFormat(arabic_in)
             english_in_run = self.convertToSuitableFormat(english_in) 
             self.successful = 'Yes'
                        
             try:
                 #initializing the data
-                self.count = 0.0  
+                #self.count = 0.0  
                 self.passedAlignment = 0.0
                 self.failedAlignment = 0.0
                 self.timeTaken = 0.0
@@ -296,14 +342,31 @@ class BaseToolTest(unittest.TestCase):
                 
                 
                 self.runWithData(arabic_in_run, english_in_run)
-                self.loadGoldenReference(golden)
+                if previousGolden != golden:
+                	previousGolden = golden
+                	self.loadGoldenReference(golden)
                 self.actualAlignments = []
                 self.loadActualData(arabic_in, english_in)
                 self.evaluateResult()
+                
+                
+                self.totalAverageSentencesLengthInSource = self.totalAverageSentencesLengthInSource + self.averageSentencesLengthInSource
+                self.totalAverageSentencesLengthInTarget = self.totalAverageSentencesLengthInTarget + self.averageSentencesLengthInTarget
+                
+                total = float(self.failedAlignment + self.passedAlignment)
+                if total == 0:
+                	self.errorRate = 0
+                else:
+                	self.errorRate = float(self.failedAlignment) / total
+                
+                self.totalAverageErrorRate = self.totalAverageErrorRate  + self.errorRate   
+                
+                numberOfTestsRun = numberOfTestsRun + 1
+                
             except Exception,ex:
-                print 'Failed test:', self.count
-                print "Exception:", ex
-                print traceback.format_exc()
+                print colored.red('Failed test:%d'%self.count)
+                print colored.red("Exception:%s"% ex)
+                print colored.red(traceback.format_exc())
                 self.successful = 'No'
 #                raise ex
 #                
@@ -312,10 +375,58 @@ class BaseToolTest(unittest.TestCase):
             
             endTime = time.time()            
             self.timeTaken = endTime - startTime
-            
+            self.totalAverageTimeTaken = self.totalAverageTimeTaken + float(self.timeTaken)
             self.writeSummary()
-            
-            self.count +=1
+            self.index.append(self.count)
+            self.sourceLengths.append(self.averageSentencesLengthInSource)
+            self.targetLengths.append(self.averageSentencesLengthInTarget)
+            self.times.append(self.timeTaken)
+            self.errorRates.append(self.errorRate)
+        	
+            self.count = self.count + 1
+        
+		#write the test summary 
+		
+        if numberOfTestsRun == 0:
+            self.totalAverageSentencesLengthInSource = 0 
+            self.totalAverageSentencesLengthInTarget = 0
+            self.totalAverageTimeTaken =  0
+            self.totalAverageErrorRate = 0
+        else:
+			self.totalAverageSentencesLengthInSource = self.totalAverageSentencesLengthInSource / float(numberOfTestsRun)
+			self.totalAverageSentencesLengthInTarget = self.totalAverageSentencesLengthInTarget / float(numberOfTestsRun)        
+			self.totalAverageTimeTaken =  self.totalAverageTimeTaken / float(numberOfTestsRun)
+			self.totalAverageErrorRate =  self.totalAverageErrorRate / float(numberOfTestsRun)
+		
+		
+		#average soruce language chunks
+        self.outputFile.write("Average Sentence Length In Source Language, %s\n"%(self.totalAverageSentencesLengthInSource))
+        print colored.green("Average Sentence Length In Source Language: %s\n"%(self.totalAverageSentencesLengthInSource))
+        self.outputFile.flush()
+
+        #average target language chunks
+        self.outputFile.write("Average Sentence Length In Target Language, %s\n"%(self.totalAverageSentencesLengthInTarget))
+        print colored.green("Average Sentence Length In Target Language: %s\n"%(self.totalAverageSentencesLengthInTarget))
+        self.outputFile.flush()
+
+        #average time taken
+        self.outputFile.write("Average Time Taken ,%s\n"%(self.totalAverageTimeTaken))
+        print colored.green("Average Time Taken                        : %s\n"%(self.totalAverageTimeTaken))
+        self.outputFile.flush()
+
+        #average error rate 
+        self.outputFile.write("Average Error Rate ,%s\n"%(self.totalAverageErrorRate))
+        print colored.green("Average Error Rate                        : %s\n"%(self.totalAverageErrorRate))
+        self.outputFile.flush()
+
+        """
+        print self.index
+        print self.sourceLengths
+        print self.targetLengths
+        print self.times
+        print self.errorRates
+        self.generateGraphs()
+        """
             
         
 if __name__=='__main__':

@@ -16,27 +16,37 @@ class VanillaSentenceAligner(BaseToolTest):
     def initialize(self):
         self.TOOL_NAME = 'Vanilla'
     
-    def convertToSuitableFormat(self, filePath):
-        f = open(filePath)
-        content = f.read()
-        f.close()
-        ps = content.split('\n')
-        result = list()
-        
-        for p in ps:
-            result.extend(p.split())
-            result.append('.EOS')
-            result.append('.EOP')
-            #print "Appending .EOS and .EOP to: ", p
-       
-        targetFile = "%s.tok"%filePath  
-        f = open(targetFile, 'w')
-        f.write('\n'.join(result))
-        f.close()
-        return targetFile
+    def readLinesEnabled(self):
+    	return True
+    	
+    def convertToSuitableFormat(self, filePath): 
+    
+		#print "sourceLines: %d"% len(self.sourceLines)
+		#print "targetLines: %d"% len(self.targetLines)
+
+		maxNumberOfHardRegions = max(len(self.targetLines),  len(self.sourceLines))
+		ps = self._getLines(filePath)
+		result = list()
+		#print "Hardregions[%s]: ==> %s"%(filePath, len(ps))
+		
+		for p in ps:
+			result.extend(p.split())
+			result.append('.EOS')
+			result.append('.EOP')
+			#print "Appending .EOS and .EOP to: ", p
+			
+		for added in range(len(ps), maxNumberOfHardRegions):
+			result.append('.EOP')
+	   
+		targetFile = "%s.tok"%filePath  
+		f = open(targetFile, 'w')
+		f.write('\n'.join(result))
+		f.close()
+		return targetFile
     
     
-    def runWithData(self, arabic_in, english_in):        
+    def runWithData(self, arabic_in, english_in): 
+    	print "source: %s"%arabic_in
         cmd = "cd %s; ./align0 -D '.EOP' -d '.EOS' %s %s "%(TOOL_PATH, arabic_in, english_in)
         os.popen(cmd)
         

@@ -116,30 +116,37 @@ java -Xms128m -Xmx512m gma.GMA  -properties %(TOOLPATH)s/config/GMA.config.F.E
         resultGSA = open("%sbin/output/output.align"% TOOL_PATH)
         resultGSALines = resultGSA.readlines()
         
+        print "len(arabicSegments): ", len(arabicSegments)
+        print "len(englishSegments): ", len(englishSegments)
+        print "len(resultGSALines): ", len(resultGSALines)
         for entry in resultGSALines:
-            a = entry.split(' <=> ')
-            if 'omitted' in a:
-                continue
-            arabicList = eval(a[0])
-            englishList = eval(a[1])
+			print "Entry: ", entry
+			a = entry.split(' <=> ')
+			if 'omitted' in a:
+				continue
+			arabicList = eval(a[0])
+			englishList = eval(a[1])
+			
+			arabicSentence = ''
+			englishSentence = ''
             
-            arabicSentence = ''
-            englishSentence = ''
-            
-            if ',' in a[0]:
-                for s in arabicList:                    
-                    arabicSentence = arabicSentence + ' ' + arabicSegments[s-1]
-            else:
-                arabicSentence = arabicSegments[arabicList-1]
-                
-            if ',' in a[1]:
-                for s in englishList:                    
-                    englishSentence = englishSentence + ' ' + englishSegments[s-1]
-            else:
-                englishSentence = englishSegments[englishList-1]
-            
-            alignment = Alignment(arabicSentence, englishSentence)
-            self.actualAlignments.append(alignment)
+			if ',' in a[0]:
+				for s in arabicList:
+					if s <= len(arabicSegments):
+						arabicSentence = arabicSentence + ' ' + arabicSegments[s-1]
+			elif arabicList <= len(arabicSegments):				
+				arabicSentence = arabicSegments[arabicList-1]
+				
+			if ',' in a[1]:
+				for s in englishList:
+					if s <= len(englishSegments):
+						englishSentence = englishSentence + ' ' + englishSegments[s-1]
+			elif englishList <= len(englishSegments):
+				englishSentence = englishSegments[englishList-1]
+			
+			if arabicSentence != '' and englishSentence != '':
+				alignment = Alignment(arabicSentence, englishSentence)
+				self.actualAlignments.append(alignment)
         print "Finished loadActualData"
         print ""
 	    
